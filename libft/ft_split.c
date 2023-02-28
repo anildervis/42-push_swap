@@ -42,6 +42,8 @@ static int ft_wordcount(char const *s, char c)
 
     i = 0;
     wordcount = 0;
+    if (*s == '\0')
+        exit(1); // "" character error message on stderror
     while (s[i])
     {
         while (s[i] && s[i] == c)
