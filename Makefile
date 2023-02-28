@@ -1,14 +1,12 @@
 #Variables
 
-NAME		= pushswap.a
-INCLUDE		= include
-LIBFT		= libft
-SRC_DIR		= src/
-OBJ_DIR		= obj/
-CC			= gcc
-CFLAGS		= -Wall -Werror -Wextra -I
-RM			= rm -f
-AR			= ar rcs
+NAME			= push_swap
+BONUS_NAME		= checker
+SRC_DIR			= src/
+BONUS_SRC_DIR	= bonus/
+CC				= gcc
+CFLAGS			= -Wall -Werror -Wextra
+RM				= rm -f
 
 # Colors
 
@@ -24,47 +22,37 @@ WHITE = \033[0;97m
 
 #Sources
 
-SRC_FILES	=	ft_printf ft_printf_utils ft_print_ptr ft_print_unsigned ft_print_hex
+SRC_FILES		=	push_swap sorting_calculations sorting stack_check stack_functions stack_read
+SRC		 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+BONUS_SRC_FILES	=	checker stack_bonus_functions
+BONUS_SRC 		= 	$(addprefix $(BONUS_SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 
+INCLUDES=libft/libft.a get_git/get_next_line.a
 
-SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
-
-###
-
-OBJF		=	.cache_exists
-
-all:		$(NAME)
-
-$(NAME):	$(OBJ)
-			@make -C $(LIBFT)
-			@cp libft/libft.a .
-			@mv libft.a $(NAME)
-			@$(AR) $(NAME) $(OBJ)
-			@echo "$(GREEN)ft_printf compiled!$(DEF_COLOR)"
-
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
-			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
-
-$(OBJF):
-			@mkdir -p $(OBJ_DIR)
+all:
+	@make -C libft/ all
+	@make -C get_git/ all
+	gcc $(SRC) -o $(NAME) $(FLAGS) $(INCLUDES)
+	@echo "$(GREEN)All compiled.$(DEF_COLOR)"
 
 clean:
-			@$(RM) -rf $(OBJ_DIR)
-			@make clean -C $(LIBFT)
-			@echo "$(BLUE)ft_printf object files cleaned!$(DEF_COLOR)"
+	@make -C libft/ clean
+	@make -C get_git/ clean
+	@echo "$(CYAN)Objects cleaned.$(DEF_COLOR)"
 
-fclean:		clean
-			@$(RM) -f $(NAME)
-			@$(RM) -f $(LIBFT)/libft.a
-			@echo "$(CYAN)ft_printf executable files cleaned!$(DEF_COLOR)"
-			@echo "$(CYAN)libft executable files cleaned!$(DEF_COLOR)"
+fclean: clean
+	$(RM) $(NAME)
+	@make -C libft/ fclean
+	@make -C get_git/ fclean
+	@echo "$(BLUE)Executable cleaned.$(DEF_COLOR)"
 
-re:			fclean all
-			@echo "$(GREEN)Cleaned and rebuilt everything for ft_printf!$(DEF_COLOR)"
+re: fclean all
+	@echo "$(RED)Recompiled!$(DEF_COLOR)"
 
-norm:
-			@norminette $(SRC) $(INCLUDE) $(LIBFT) | grep -v Norme -B1 || true
+bonus:
+	@make -C libft/ all
+	@make -C get_git/ all
+	gcc $(BONUS_SRC) -o $(BONUS_NAME) $(FLAGS) $(INCLUDES)
+	@echo "$(YELLOW)Bonus checker compiled.$(DEF_COLOR)"
 
-.PHONY:		all clean fclean re norm
+.PHONY: all clean fclean re bonus

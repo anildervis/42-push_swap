@@ -1,25 +1,23 @@
-NAME = libft.a
+NAME		= libft.a
+SRC_DIR		= src/
+OBJ_DIR		= obj/
+CC			= gcc
+CCFLAGS		= -Wall -Werror -Wextra -I
+SRC_FILES	= atoi calloc split strjoin
 
-CC= gcc
-
-CCFLAGS= -Wall -Werror -Wextra
-
-SRCS= ft_atoi.c ft_round.c ft_split.c \
-	ft_strdup.c ft_strlen.c ft_substr.c \
-	ft_wordcount.c hypotenuse.c
-
-OBJS= $(SRCS:.c=.o)
+SRCS 		=	$(addprefix ft_, $(addsuffix .c, $(SRC_FILES)))
+OBJS		=	$(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
 
 clean:
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
