@@ -3,7 +3,7 @@ SRC_DIR		= src/
 OBJ_DIR		= obj/
 CC			= gcc
 CCFLAGS		= -Wall -Werror -Wextra -I
-SRC_FILES	= atoi calloc split strjoin
+SRC_FILES	= atoi calloc split strjoin min max
 
 SRCS 		=	$(addprefix ft_, $(addsuffix .c, $(SRC_FILES)))
 OBJS		=	$(SRCS:.c=.o)
