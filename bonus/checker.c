@@ -1,31 +1,60 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aderviso <aderviso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/02 12:01:24 by aderviso          #+#    #+#             */
+/*   Updated: 2023/03/02 15:28:25 by aderviso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap_bonus.h"
+
+int	is_equal(char *str, char *to_check)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i] != '\0')
+		if (str[i] != to_check[i])
+			return (0);
+	return (1);
+}
 
 void	process_model(char *str, int *stack_a, int *stack_b)
 {
-	if (str == "sa\n")
+	if (is_equal(str, "sa\n"))
 		swap_bonus(stack_a, stack_b, 'a');
-	else if (str == "sb\n")
+	else if (is_equal(str, "sb\n"))
 		swap_bonus(stack_a, stack_b, 'b');
-	else if (str == "ss\n")
+	else if (is_equal(str, "ss\n"))
 		swap_bonus(stack_a, stack_b, 's');
-	else if (str == "pa\n")
+	else if (is_equal(str, "pa\n"))
 		push_a_bonus(stack_a, stack_b);
-	else if (str == "pb\n")
+	else if (is_equal(str, "pb\n"))
 		push_b_bonus(stack_a, stack_b);
-	else if (str == "ra\n")
+	else if (is_equal(str, "ra\n"))
 		rotate_bonus(stack_a, stack_b, 'a');
-	else if (str == "rb\n")
+	else if (is_equal(str, "rb\n"))
 		rotate_bonus(stack_a, stack_b, 'b');
-	else if (str == "rr\n")
+	else if (is_equal(str, "rr\n"))
 		rotate_bonus(stack_a, stack_b, 'r');
-	else if (str == "rra\n")
+	else if (is_equal(str, "rra\n"))
 		reverse_rotate_bonus(stack_a, stack_b, 'a');
-	else if (str == "rrb\n")
+	else if (is_equal(str, "rrb\n"))
 		reverse_rotate_bonus(stack_a, stack_b, 'b');
-	else if (str == "rrr\n")
+	else if (is_equal(str, "rrr\n"))
 		reverse_rotate_bonus(stack_a, stack_b, 'r');
 	else
-		exit(1); // instruction doesn't exist error message on stderror
+		error();
+}
+
+void	error(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
 }
 
 int	main(int argc, char **argv)
@@ -39,15 +68,14 @@ int	main(int argc, char **argv)
 	stack_b[0] = 0;
 	stack_a = indexing(stack_a);
 	stack_b = indexing(stack_b);
-	line = get_next_line(1);
-	while (line)
+	line = get_next_line(0);
+	while (line != NULL)
 	{
 		process_model(line, stack_a, stack_b);
 		free(line);
-		line = get_next_line(1);
+		line = get_next_line(0);
 	}
-	free(line);
-	if (is_sorted(stack_a))
+	if (is_sorted(stack_a) && stack_b[0] == 0)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
