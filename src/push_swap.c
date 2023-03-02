@@ -6,7 +6,7 @@
 /*   By: aderviso <aderviso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:02:03 by aderviso          #+#    #+#             */
-/*   Updated: 2023/03/02 15:31:23 by aderviso         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:35:39 by aderviso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ int	main(int argc, char **argv)
 		send_all_a(stack_a, stack_b, stack_c);
 		last_sort(stack_a, stack_b);
 	}
+	i = 0;
 }

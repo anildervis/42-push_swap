@@ -6,7 +6,7 @@
 /*   By: aderviso <aderviso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:56:02 by aderviso          #+#    #+#             */
-/*   Updated: 2023/03/02 15:29:14 by aderviso         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:34:05 by aderviso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	*argument_get(int argc, char **argv)
 	char	*old;
 	char	**stack_list;
 
-	str = ft_calloc(2000, sizeof(char));
+	str = ft_calloc(2, sizeof(char *));
 	i = 0;
 	while (++i < argc)
 	{
@@ -34,6 +34,7 @@ int	*argument_get(int argc, char **argv)
 			old = str;
 			str = ft_strjoin(str, argv[i]);
 			free(old);
+			free(stack_list[j]);
 		}
 		free(stack_list);
 	}
