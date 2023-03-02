@@ -29,7 +29,9 @@ BONUS_SRC 		= 	$(addprefix $(BONUS_SRC_DIR), $(addsuffix .c, $(BONUS_SRC_FILES))
 
 INCLUDES=libft/libft.a get_git/get_next_line.a
 
-all:
+all:	$(NAME)
+
+$(NAME):
 	@make -C libft/ all
 	@make -C get_git/ all
 	gcc $(SRC) -o $(NAME) $(FLAGS) $(INCLUDES)
