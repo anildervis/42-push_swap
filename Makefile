@@ -24,8 +24,8 @@ WHITE = \033[0;97m
 
 SRC_FILES		=	push_swap sorting_calculations sorting stack_check stack_functions stack_read
 SRC		 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-BONUS_SRC_FILES	=	checker stack_bonus_functions
-BONUS_SRC 		= 	$(addprefix $(BONUS_SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+BONUS_SRC_FILES	=	checker stack_bonus_functions stack_read_bonus
+BONUS_SRC 		= 	$(addprefix $(BONUS_SRC_DIR), $(addsuffix .c, $(BONUS_SRC_FILES)))
 
 INCLUDES=libft/libft.a get_git/get_next_line.a
 
@@ -41,7 +41,7 @@ clean:
 	@echo "$(CYAN)Objects cleaned.$(DEF_COLOR)"
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(BONUS_NAME)
 	@make -C libft/ fclean
 	@make -C get_git/ fclean
 	@echo "$(BLUE)Executable cleaned.$(DEF_COLOR)"
