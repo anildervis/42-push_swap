@@ -6,7 +6,7 @@
 /*   By: aderviso <aderviso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:02:03 by aderviso          #+#    #+#             */
-/*   Updated: 2023/03/02 16:35:39 by aderviso         ###   ########.fr       */
+/*   Updated: 2023/03/02 17:29:27 by aderviso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	main(int argc, char **argv)
 	int	*stack_b;
 	int	*stack_c;
 
+	if (argc <= 1)
+		return (0);
 	stack_a = argument_get(argc, argv);
 	stack_b = ft_calloc(stack_a[0], sizeof(int));
 	stack_c = ft_calloc(stack_a[0], sizeof(int));

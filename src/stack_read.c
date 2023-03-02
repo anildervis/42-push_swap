@@ -6,7 +6,7 @@
 /*   By: aderviso <aderviso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:02:22 by aderviso          #+#    #+#             */
-/*   Updated: 2023/03/02 16:28:51 by aderviso         ###   ########.fr       */
+/*   Updated: 2023/03/02 17:28:42 by aderviso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int	*argument_get(int argc, char **argv)
 		while (stack_list[++j])
 		{
 			old = str;
-			str = ft_strjoin(str, " ");
+			str = ft_strjoin(str, stack_list[j]);
 			free(old);
 			old = str;
-			str = ft_strjoin(str, argv[i]);
+			str = ft_strjoin(str, " ");
 			free(old);
 			free(stack_list[j]);
 		}
