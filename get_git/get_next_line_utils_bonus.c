@@ -6,7 +6,7 @@
 /*   By: aderviso <aderviso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:48:00 by aderviso          #+#    #+#             */
-/*   Updated: 2023/02/27 13:55:42 by aderviso         ###   ########.fr       */
+/*   Updated: 2023/03/02 12:58:46 by aderviso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_strlen_get(char *string)
 	return (i);
 }
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_calloc_get(size_t count, size_t size)
 {
 	void	*a;
 	size_t	i;
@@ -39,11 +39,11 @@ void	*ft_calloc(size_t count, size_t size)
 	a = (void *) malloc(size * count);
 	if (!a)
 		return (0);
-	ft_bzero(a, size * count);
+	ft_bzero_get(a, size * count);
 	return (a);
 }
 
-void	ft_bzero(void *s, size_t n)
+void	ft_bzero_get(void *s, size_t n)
 {
 	size_t	i;
 
@@ -55,7 +55,7 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_get(char *s1, char *s2)
 {
 	char	*str;
 	int		i;
@@ -64,7 +64,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	i = 0;
 	k = 0;
 	if (s1 == (void *)0)
-		s1 = ft_calloc(1, 1);
+		s1 = ft_calloc_get(1, 1);
 	str = malloc(sizeof(char) * (ft_strlen_get(s1) + ft_strlen_get(s2) + 1));
 	if (!str)
 		return (0);

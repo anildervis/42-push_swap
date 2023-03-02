@@ -6,7 +6,7 @@
 /*   By: aderviso <aderviso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 15:38:15 by aderviso          #+#    #+#             */
-/*   Updated: 2023/02/27 13:55:22 by aderviso         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:29:25 by aderviso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*read_from_text(int fd, char *string, int count)
 			return (NULL);
 		}
 		string_to_join[count] = '\0';
-		string = ft_strjoin(string, string_to_join);
+		string = ft_strjoin_get(string, string_to_join);
 		if (count < BUFFER_SIZE)
 		{
 			free(string_to_join);
