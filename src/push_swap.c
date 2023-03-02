@@ -6,7 +6,7 @@
 /*   By: aderviso <aderviso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:02:03 by aderviso          #+#    #+#             */
-/*   Updated: 2023/03/02 17:29:27 by aderviso         ###   ########.fr       */
+/*   Updated: 2023/03/02 20:11:19 by aderviso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	small_sort(int *stack_a, int *stack_b)
 
 int	main(int argc, char **argv)
 {
-	int	i;
 	int	*stack_a;
 	int	*stack_b;
 	int	*stack_c;
@@ -58,5 +57,4 @@ int	main(int argc, char **argv)
 		send_all_a(stack_a, stack_b, stack_c);
 		last_sort(stack_a, stack_b);
 	}
-	i = 0;
 }
