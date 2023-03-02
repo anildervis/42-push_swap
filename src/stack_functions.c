@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_functions.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aderviso <aderviso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/02 12:02:19 by aderviso          #+#    #+#             */
+/*   Updated: 2023/03/02 15:31:42 by aderviso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	swap(int *a, int *b, char x)
@@ -24,12 +36,12 @@ void	swap(int *a, int *b, char x)
 		write(1, "ss\n", 3);
 }
 
-void	push_a(int *a, int *b) // a'nın sonuna null terminate
+void	push_a(int *a, int *b)
 {
 	int	i;
 
 	i = -1;
-	if (b[0] > 0) // if (b[0] <= 0) return ; yapıp parantezleri eleyebiliriz
+	if (b[0] > 0)
 	{
 		while ((a[0] - ++i) > 0)
 			a[a[0] + 1 - i] = a[a[0] - i];
@@ -44,12 +56,12 @@ void	push_a(int *a, int *b) // a'nın sonuna null terminate
 	}
 }
 
-void	push_b(int *a, int *b) // b'nin sonuna null terminate
+void	push_b(int *a, int *b)
 {
 	int	i;
 
 	i = -1;
-	if (a[0] > 0) // if (a[0] <= 0) return ; yapıp parantezleri eleyebiliriz
+	if (a[0] > 0)
 	{
 		while ((b[0] - ++i) > 0)
 			b[b[0] + 1 - i] = b[b[0] - i];
@@ -63,7 +75,6 @@ void	push_b(int *a, int *b) // b'nin sonuna null terminate
 		write(1, "pb\n", 3);
 	}
 }
-
 
 void	rotate(int *a, int *b, char x)
 {

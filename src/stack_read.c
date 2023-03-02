@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_read.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aderviso <aderviso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/02 12:02:22 by aderviso          #+#    #+#             */
+/*   Updated: 2023/03/02 15:32:01 by aderviso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	*argument_get(int argc, char **argv)
@@ -43,25 +55,41 @@ int	*stack_converter(char *str)
 	i = 0;
 	stack = ft_calloc(len + 2, sizeof(int));
 	stack[0] = len;
-	while(++i <= len)
+	while (++i <= len)
 	{
-		stack[i] = ft_atoi(char_stack[i - 1]); // check atoi function
+		stack[i] = ft_atoi(char_stack[i - 1]);
 		free(char_stack[i - 1]);
 	}
 	stack[i] = '\0';
 	free(str);
 	free(char_stack);
+	check_duplicates(stack);
 	return (stack);
 }
 
-// indexing can be optimized by using different algorithms
+void	check_duplicates(int *stack)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	i = 0;
+	while (++i < stack[0])
+	{
+		j = 0;
+		while (++j + i <= stack[0])
+			if (stack[i] == stack[i + j])
+				error();
+	}
+}
+
 int	*indexing(int *list)
 {
 	int	i;
 	int	j;
 	int	*index;
 
-	index = (int *)malloc(sizeof(int) * (list[0] + 2)); // null terminated
+	index = (int *)malloc(sizeof(int) * (list[0] + 2));
 	index[0] = list[0];
 	j = 0;
 	while (++j <= list[0])
@@ -73,9 +101,9 @@ int	*indexing(int *list)
 			if (i != j)
 			{
 				if (list[i] == list[j])
-					exit(1); // duplicate error on stderror
+					exit(1);
 				else if (list[j] > list[i])
-					index[j] += 1; 
+					index[j] += 1;
 			}
 		}
 	}

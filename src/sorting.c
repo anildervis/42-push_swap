@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aderviso <aderviso@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/02 12:02:14 by aderviso          #+#    #+#             */
+/*   Updated: 2023/03/02 12:12:13 by aderviso         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	seperating_into_stacks(int *stack_a, int *stack_b)
@@ -25,9 +37,13 @@ void	send_all_b(int *stack_a, int *stack_b)
 
 	i = 0;
 	count = stack_a[0];
-	while (++i <= count) // son 5i bırakıyoruz
+	while (++i <= count)
 	{
-		if (stack_a[1] != (stack_a[0] + stack_b[0] - 1) && stack_a[1] != (stack_a[0] + stack_b[0] - 2) && stack_a[1] != (stack_a[0] + stack_b[0] - 3) && stack_a[1] != (stack_a[0] + stack_b[0] - 4) && stack_a[1] != (stack_a[0] + stack_b[0] - 5))
+		if (stack_a[1] != (stack_a[0] + stack_b[0] - 1)
+			&& stack_a[1] != (stack_a[0] + stack_b[0] - 2)
+			&& stack_a[1] != (stack_a[0] + stack_b[0] - 3)
+			&& stack_a[1] != (stack_a[0] + stack_b[0] - 4)
+			&& stack_a[1] != (stack_a[0] + stack_b[0] - 5))
 			push_b(stack_a, stack_b);
 		else
 			rotate(stack_a, stack_b, 'a');
